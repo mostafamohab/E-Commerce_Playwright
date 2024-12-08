@@ -1,0 +1,102 @@
+name: Playwright Tests
+
+'on':
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      targetBrowser:
+        description: Choose Target Browser
+        default: chromium
+        type: choice
+        options:
+          - firefox
+          - chromium
+          - webkit
+
+jobs:
+  Custom_Linux_Grid:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js environment
+      - name: Setup Node.js env
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      # Step 3: Install Yarn (if not installed)
+      - name: Install Yarn
+        run: |
+          npm install -g yarn
+
+      # Step 4: Install dependencies using Yarn
+      - name: Install dependencies
+        run: |
+          yarn install
+          yarn add playwright
+          yarn add typescript ts-node @types/node
+
+      # Step 5: Install Playwright Browsers
+      - name: Install Playwright Browsers
+        run: yarn playwright install --with-deps
+
+      # Step 6: Log Browser Version
+      - name: Log Browser Version
+        run: |
+          if [ '${{ github.event.inputs.targetBrowser }}' == 'firefox' ]; then
+              BROWSER_VERSION=$(yarn playwright show-browser firefox --version)
+              echo "Firefox Browser Version: $BROWSER_VERSION"
+          elif [ '${{ github.event.inputs.targetBrowser }}' == 'chromium' ]; then
+              BROWSER_VERSION=$(yarn playwright show-browser chromium --version)
+              echo "Google Chrome Browser Version: $BROWSER_VERSION"
+          elif [ '${{ github.event.inputs.targetBrowser }}' == 'webkit' ]; then
+              BROWSER_VERSION=$(yarn playwright show-browser webkit --version)
+              echo "Microsoft Edge Browser Version: $BROWSER_VERSION"
+          else
+              echo "Browser not supported"
+          fi
+
+      # Step 7: Compile TypeScript
+      - name: Compile TypeScript
+        run: yarn tsc
+
+      # Step 8: Ensure Playwright Artifacts exists
+      - name: Ensure Playwright Artifacts Directory Exists
+        run: |
+          mkdir -p test-results/.playwright-artifacts-0/traces
+
+      # Step 9: Run Playwright Tests with xvfb-run
+      - name: Run Playwright Tests with xvfb-run
+        run: |
+          # Check if Xvfb is needed (for headed mode)
+          if [ '${{ github.event.inputs.targetBrowser }}' == 'firefox' ] ||
+             [ '${{ github.event.inputs.targetBrowser }}' == 'chromium' ] ||
+             [ '${{ github.event.inputs.targetBrowser }}' == 'webkit' ]; then
+            echo "Running tests with xvfb-run to simulate display"
+            xvfb-run -a yarn playwright test --project="${{ github.event.inputs.targetBrowser || 'chromium' }}"
+          else
+            echo "Running tests headlessly"
+            yarn playwright test --project="${{ github.event.inputs.targetBrowser || 'chromium' }}"
+          fi
+
+      # Step 10: Upload Playwright Report as Pipeline Artifact
+      - name: Upload Playwright Report as Pipeline Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Playwright_Report
+          path: playwright-report/
+
+      # Step 11: Upload Playwright Report HTML as Pipeline Artifact
+      - name: Upload Playwright Report HTML as Pipeline Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Playwright_Report_HTML
+          path: playwright-report/index.html

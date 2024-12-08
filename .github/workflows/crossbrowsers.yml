@@ -1,0 +1,83 @@
+name: Playwright Crossbrowsers Tests
+
+'on':
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  Custom_Linux_Grid:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js environment
+      - name: Setup Node.js env
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      # Step 3: Install Yarn (if not installed)
+      - name: Install Yarn
+        run: |
+          npm install -g yarn
+
+      # Step 4: Install dependencies using Yarn
+      - name: Install dependencies
+        run: |
+          yarn install
+          yarn add playwright
+          yarn add typescript ts-node @types/node
+
+      # Step 5: Install Playwright Browsers
+      - name: Install Playwright Browsers
+        run: yarn playwright install --with-deps
+
+      # Step 6: Compile TypeScript
+      - name: Compile TypeScript
+        run: yarn tsc
+
+      # Step 7: Ensure Playwright Artifacts exists
+      - name: Ensure Playwright Artifacts Directory Exists
+        run: |
+         mkdir -p test-results/.playwright-artifacts-0/traces
+
+      # Step 8: Run Playwright Tests across all browsers in parallel
+      - name: Run Playwright Tests across all browsers
+        run: |
+          echo "Running tests on all browsers: Chromium, Firefox, and WebKit (Edge)"
+          
+          # Run tests across all browsers in parallel using the `projects` configuration
+          # The `&` operator runs these commands in parallel, and `wait` ensures that they all finish before continuing
+          xvfb-run -a yarn playwright test --project=chromium --reporter=html &   # Chromium
+          xvfb-run -a yarn playwright test --project=firefox --reporter=html &     # Firefox
+          xvfb-run -a yarn playwright test --project=webkit --reporter=html &      # WebKit (Edge)
+          wait  # Wait for all browsers to finish running
+
+      # Step 9: Upload Playwright Reports as Pipeline Artifact
+      - name: Upload Playwright Report as Pipeline Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Playwright_Report
+          path: playwright-report/
+
+      # Step 10: Upload Playwright Report HTML as Pipeline Artifact
+      - name: Upload Playwright Report HTML as Pipeline Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Playwright_Report_HTML
+          path: playwright-report/index.html
+
+      # Step 11: Upload Playwright Test Results (Optional)
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Playwright_Test_Results
+          path: test-results/
