@@ -1,7 +1,7 @@
 import { devices ,defineConfig} from '@playwright/test';
 
 export default defineConfig ({
-    workers: 8, // Increase the number of workers for parallel execution
+    workers: 3, // Increase the number of workers for parallel execution
     testDir: './src/tests',
     timeout: 60 * 1000,
     use: {
