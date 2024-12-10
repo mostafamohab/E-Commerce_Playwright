@@ -15,7 +15,7 @@ export default defineConfig ({
         }
     },
     reporter : [
-    ['html'],
+    ['html', { outputFolder: 'test-results' }],
     ],
 
     projects: [
