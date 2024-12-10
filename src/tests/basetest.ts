@@ -44,6 +44,7 @@ let baseTest!: BaseTest;
 
 // Automatically run setup and teardown before and after each test
 test.beforeEach(async () => {
+  baseTest = new BaseTest();
   await baseTest.setup(); // Runs setup for each test
 });
 
@@ -53,8 +54,4 @@ test.afterEach(async () => {
   } else {
     console.error("baseTest is not defined");
   }
-});
-
-test.beforeAll(async () => {
-  baseTest = new BaseTest();
 });
