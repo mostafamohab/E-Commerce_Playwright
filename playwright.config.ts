@@ -29,7 +29,7 @@ export default defineConfig ({
         name: browser.name,
         use: { ...browser.device },
         reporter: [
-          ['html', { outputFolder: `test-results/playwright-report/${browser.outputFolder}` }],
+          ['html', { outputFolder: 'test-results/playwright-report/${browser.outputFolder}' }],
         ],
       })),
 });
