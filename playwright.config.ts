@@ -20,17 +20,13 @@ export default defineConfig ({
             slowMo: 50
         }
     },
-
-      reporter: [
-        // Reporter will be configured dynamically inside each project
-      ],
     
       projects:
-        browsers.map(browser => ({
+        browsers.map((browser) => ({
         name: browser.name,
         use: { ...browser.device },
         reporter: [
-          ['html', { outputFolder: 'test-results/playwright-report/${browser.outputFolder}' }],
+          ['html', { outputFolder: `test-results/playwright-report/${browser.outputFolder}` }],
         ],
       })),
 });
