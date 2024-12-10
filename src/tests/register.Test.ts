@@ -12,7 +12,7 @@ test.describe("Register User", () => {
     return randomEmail;
   }
 
-  test.beforeEach(async() => {
+test.beforeEach(async() => {
 
     basetest=new BaseTest();
     await basetest.setup();// Set up the browser, page, and page objects

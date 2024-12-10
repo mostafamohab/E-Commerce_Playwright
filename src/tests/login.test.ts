@@ -6,7 +6,7 @@ let basetest : BaseTest;
 test.describe("Login User", () => {
 
  // Before each test, create an instance of BaseTest
- test.beforeEach(async() => {
+test.beforeEach(async() => {
 
     basetest=new BaseTest();
     await basetest.setup();// Set up the browser, page, and page objects
