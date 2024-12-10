@@ -3,7 +3,7 @@ import { defineConfig} from '@playwright/test';
 export default defineConfig ({
     workers: 3, // Increase the number of workers for parallel execution
     testDir: './src/tests',
-    timeout: 150 * 1000,
+    timeout: 30 * 1000,
     use: {
         baseURL: "https://www.automationexercise.com",
         headless: false,
@@ -20,15 +20,18 @@ export default defineConfig ({
     projects: [
         {
           name: 'chromium',
-          use: { browserName: 'chromium' }
+          use: { browserName: 'chromium' },
+          outputDir: 'test-results/chromium', // Specify the output folder for test results
         },
         {
           name: 'firefox',
-          use: { browserName: 'firefox' }
+          use: { browserName: 'firefox' },
+          outputDir: 'test-results/firefox', // Specify the output folder for test results
         },
         {
           name: 'webkit',
-          use: { browserName: 'webkit' }
+          use: { browserName: 'webkit' },
+          outputDir: 'test-results/webkit', // Specify the output folder for test results
         },
       ],
 });
