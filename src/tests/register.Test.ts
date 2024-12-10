@@ -1,16 +1,17 @@
 import { test, expect} from "@playwright/test"
 import { BaseTest } from "./basetest";
 
-let basetest: BaseTest;
-let randomEmail: string;
-
-function generateRandomEmail(): string 
-{
-  randomEmail = (Math.random() + 1).toString(36).substring(2) + "@gmail.com";
-  return randomEmail;
-}
-
 test.describe("Register User", () => {
+
+  let basetest: BaseTest;
+  let randomEmail: string;
+
+  function generateRandomEmail(): string 
+  {
+    randomEmail = (Math.random() + 1).toString(36).substring(2) + "@gmail.com";
+    return randomEmail;
+  }
+
   test.beforeEach(async() => {
 
     basetest=new BaseTest();

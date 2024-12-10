@@ -1,9 +1,9 @@
 import { test, expect} from "@playwright/test"
 import { BaseTest } from "./basetest";
 
-let basetest : BaseTest;
-
 test.describe("Login User", () => {
+    let basetest : BaseTest;
+
  // Before each test, create an instance of BaseTest
  test.beforeEach(async() => {
 
