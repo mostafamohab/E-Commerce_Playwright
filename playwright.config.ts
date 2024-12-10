@@ -21,17 +21,17 @@ export default defineConfig ({
         {
           name: 'chromium',
           use: { browserName: 'chromium' },
-          outputDir: 'test-results/chromium', // Specify the output folder for test results
+          outputDir: 'test-results/playwright-report/chromium', // Specify the output folder for test results
         },
         {
           name: 'firefox',
           use: { browserName: 'firefox' },
-          outputDir: 'test-results/firefox', // Specify the output folder for test results
+          outputDir: 'test-results/playwright-report/firefox', // Specify the output folder for test results
         },
         {
           name: 'webkit',
           use: { browserName: 'webkit' },
-          outputDir: 'test-results/webkit', // Specify the output folder for test results
+          outputDir: 'test-results/playwright-report/webkit', // Specify the output folder for test results
         },
       ],
 });
