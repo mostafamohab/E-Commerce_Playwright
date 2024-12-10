@@ -20,7 +20,7 @@ export class BaseTest implements IBaseTest {
   // Setup method to initialize the browser, page, and page objects
   async setup() {
     // Launch browser and create new page instance
-    this.browser = await chromium.launch({ headless: false });  // Change to true for headless mode
+    this.browser = await chromium.launch({ headless: true });  // Change to true for headless mode
     this.page = await this.browser.newPage();
 
     // Initialize page objects
