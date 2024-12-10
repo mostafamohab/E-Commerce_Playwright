@@ -39,13 +39,24 @@ export class BaseTest implements IBaseTest {
   }
 }
 
+// Export a single instance of BaseTest to be used globally
+let baseTest: BaseTest;
+
 // Automatically run setup and teardown before and after each test
-test.beforeEach(async () => {
+test.beforeAll(async () => {
   const baseTest = new BaseTest();
   await baseTest.setup(); // Runs setup for each test
 });
 
-test.afterEach(async () => {
-  const baseTest = new BaseTest();
+test.afterAll(async () => {
   await baseTest.teardown(); // Runs teardown for each test
+});
+
+test.beforeEach(async () => {
+  // You can access baseTest instance in each test
+  // Setup logic before each test if needed
+});
+
+test.afterEach(async () => {
+  // Cleanup after each test if needed
 });
