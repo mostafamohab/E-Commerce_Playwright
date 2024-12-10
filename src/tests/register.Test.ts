@@ -16,7 +16,7 @@ test.describe("Register User", () => {
     basetest=new BaseTest();
     await basetest.setup();// Set up the browser, page, and page objects
 
-    generateRandomEmail();
+    randomEmail = generateRandomEmail();
     await basetest.loginPage.navigate();
 
 });
@@ -27,7 +27,7 @@ test.afterEach(async () => {
 
 });
 
-test("user can register user with valid credentials", async ({}) => {
+test("user can register user with valid credentials", async () => {
     //1- Navigate to Login Page
     await basetest.loginPage.navigate();
 
