@@ -12,7 +12,7 @@ test.describe("Register User", () => {
     return randomEmail;
   }
 
-test.beforeEach(async() => {
+  test.beforeEach(async() => {
 
     basetest=new BaseTest();
     await basetest.setup();// Set up the browser, page, and page objects
@@ -20,15 +20,15 @@ test.beforeEach(async() => {
     randomEmail = generateRandomEmail();
     await basetest.loginPage.navigate();
 
-});
+  });
 
-// After each test, clean up
-test.afterEach(async () => {
+  // After each test, clean up
+  test.afterEach(async () => {
   await basetest.teardown(); // Close the browser
 
-});
+  });
 
-test("user can register user with valid credentials", async () => {
+  test("user can register user with valid credentials", async () => {
     //1- Navigate to Login Page
     await basetest.loginPage.navigate();
 
@@ -58,7 +58,7 @@ test("user can register user with valid credentials", async () => {
 
     //10- Verify that 'Account Deleted!' Text is Visible
     await expect(basetest.accountdeletedPage.getAccountDeletedText).toBeVisible();
-});
+  });
 
 });
 
