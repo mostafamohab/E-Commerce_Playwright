@@ -4,7 +4,7 @@ import { BaseTest } from "./basetest";
 let basetest : BaseTest;
 
  // Before each test, create an instance of BaseTest
-test.beforeEach(async({}) => {
+test.beforeEach(async() => {
 
     basetest=new BaseTest();
     await basetest.setup();// Set up the browser, page, and page objects
@@ -27,7 +27,7 @@ test('user can login with valid credentials', async() => {
    await basetest.loginPage.login('mohamed999@gmail.com','Password123');
     
     // Verify that "Logged in as username" is visible
-    const isLoggedIn = basetest.homePage.getElementByText(' Logged in as Mohamed');
+    const isLoggedIn = await basetest.homePage.getElementByText(' Logged in as Mohamed');
 
     await expect (isLoggedIn).toBeVisible();
 });
@@ -38,7 +38,7 @@ test('user can login with invalid credentials', async() => {
     await basetest.loginPage.login('mohamed999345@gmail.com','Password123');
 
     // Verify that "Your email or password is incorrect" is visible
-    const hasError= basetest.loginPage.getElementByText('Your email or password is incorrect!');
+    const hasError= await basetest.loginPage.getElementByText('Your email or password is incorrect!');
 
     await expect (hasError).toBeVisible();
 });
