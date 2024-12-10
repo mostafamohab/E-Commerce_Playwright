@@ -11,14 +11,14 @@
   "author": "mosta <mostafa_mohab18@hotmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@playwright/test": "^1.49.1",
     "@types/node": "^22.10.1",
     "allure-commandline": "^2.32.0",
+    "allure-playwright": "^3.0.7",
+    "playwright": "^1.49.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   },
-  "dependencies": {
-    "@playwright/test": "^1.49.1",
-    "playwright": "^1.49.1"
-  },
+  "dependencies": {},
   "repository": "https://github.com/mostafamohab/E-Commerce_Playwright.git"
 }

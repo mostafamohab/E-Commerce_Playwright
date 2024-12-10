@@ -1,9 +1,15 @@
 import { defineConfig, devices} from '@playwright/test';
 
 const browsers = [
-  { name: 'chromium', device: devices['Desktop Chrome'], outputFolder: 'chromium' },
-  { name: 'firefox', device: devices['Desktop Firefox'], outputFolder: 'firefox' },
-  { name: 'webkit', device: devices['Desktop Safari'], outputFolder: 'webkit' }
+  { name: 'chromium', device: devices['Desktop Chrome'],
+     outputFolder: 'chromium' 
+  },
+  { name: 'firefox', device: devices['Desktop Firefox'],
+     outputFolder: 'firefox' 
+  },
+  { name: 'webkit', device: devices['Desktop Safari'], 
+    outputFolder: 'webkit' 
+  }
 ];
 
 export default defineConfig ({
@@ -21,12 +27,14 @@ export default defineConfig ({
         }
     },
     
-      projects:
-        browsers.map((browser) => ({
-        name: browser.name,
-        use: { ...browser.device },
-        reporter: [
-          ['html', { outputFolder: `test-results/playwright-report/${browser.outputFolder}` }],
-        ],
+    projects: 
+        browsers.map((browser: { name: any; device: any; outputFolder: any; }) => ({
+        name: 
+        browser.name,
+
+        use: 
+        { ...browser.device },
+
+        reporter: [['html', { outputFolder: `test-results/playwright-report/${browser.outputFolder}` }]],
       })),
 });
