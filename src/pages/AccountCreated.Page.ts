@@ -20,8 +20,8 @@ export class AccountCreatedPage extends BasePage{
     
     public get getContinueButton(): Locator
     {
-    this.getContinueButtonText = this.page.locator("//*[@data-qa='continue-button']");
-    return this.getContinueButtonText;
+        this.getContinueButtonText = this.page.locator("//*[@data-qa='continue-button']");
+        return this.getContinueButtonText;
 
     }
     public async navigate(): Promise<void> {

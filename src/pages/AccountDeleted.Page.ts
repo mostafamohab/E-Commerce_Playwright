@@ -8,7 +8,7 @@ export class AccountDeletedPage extends BasePage{
 
     constructor(page: Page)
     {
-    super(page);// Call the constructor of BasePage
+        super(page);// Call the constructor of BasePage
     }
 
     public async verifyAccountDeleted() {
@@ -18,14 +18,14 @@ export class AccountDeletedPage extends BasePage{
 
     public get getContinueButton(): Locator
     {
-    this.getContinueButtonText = this.page.locator("//*[@data-qa='continue-button']");
-    return this.getContinueButtonText;
+        this.getContinueButtonText = this.page.locator("//*[@data-qa='continue-button']");
+        return this.getContinueButtonText;
 
     }
 
     public get getAccountDeletedText(): Locator
     {
-        this.getAccountDeletedTextLocator= this.page.getByText("Account Created!");
+        this.getAccountDeletedTextLocator= this.page.getByText("Account Deleted!");
         return this.getAccountDeletedTextLocator; 
 
     }
