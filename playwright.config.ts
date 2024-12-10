@@ -14,9 +14,7 @@ export default defineConfig ({
             slowMo: 50
         }
     },
-    reporter : [
-    ['html', { outputFolder: '/test-results' }],
-    ],
+    reporter : [['html', { outputFolder: 'test-results' }]],
 
     projects: [
         {
