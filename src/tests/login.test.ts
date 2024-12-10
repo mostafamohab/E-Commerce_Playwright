@@ -19,7 +19,7 @@ test.afterEach(async () => {
 
 });
 
-test.describe("Login User", async() => {
+test.describe("Login User", () => {
 
 test('user can login with valid credentials', async() => {
 

@@ -26,7 +26,7 @@ function generateRandomEmail(): string
   return randomEmail;
 }
 
-test.describe("Register User", async() => {
+test.describe("Register User", () => {
 
 test("user can register user with valid credentials", async ({}) => {
     //1- Navigate to Login Page
