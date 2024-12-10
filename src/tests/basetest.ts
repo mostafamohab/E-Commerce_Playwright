@@ -55,11 +55,3 @@ test.afterAll(async () => {
     console.error("baseTest is not defined");
   }
 });
-
-test.beforeEach(async () => {
-
-});
-
-test.afterEach(async () => {
-  
-});
