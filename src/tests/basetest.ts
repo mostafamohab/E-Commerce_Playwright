@@ -49,9 +49,6 @@ test.beforeEach(async () => {
 });
 
 test.afterEach(async () => {
-  if (baseTest) {
+
     await baseTest.teardown(); // Runs teardown once after each test
-  } else {
-    console.error("baseTest is not defined");
-  }
 });
