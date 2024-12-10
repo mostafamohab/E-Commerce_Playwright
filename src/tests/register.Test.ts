@@ -4,7 +4,14 @@ import { BaseTest } from "./basetest";
 let basetest: BaseTest;
 let randomEmail: string;
 
-test.beforeEach(async() => {
+function generateRandomEmail(): string 
+{
+  randomEmail = (Math.random() + 1).toString(36).substring(2) + "@gmail.com";
+  return randomEmail;
+}
+
+test.describe("Register User", () => {
+  test.beforeEach(async() => {
 
     basetest=new BaseTest();
     await basetest.setup();// Set up the browser, page, and page objects
@@ -19,14 +26,6 @@ test.afterEach(async () => {
   await basetest.teardown(); // Close the browser
 
 });
-
-function generateRandomEmail(): string 
-{
-  randomEmail = (Math.random() + 1).toString(36).substring(2) + "@gmail.com";
-  return randomEmail;
-}
-
-test.describe("Register User", () => {
 
 test("user can register user with valid credentials", async ({}) => {
     //1- Navigate to Login Page

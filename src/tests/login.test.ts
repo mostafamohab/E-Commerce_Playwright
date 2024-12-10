@@ -3,8 +3,9 @@ import { BaseTest } from "./basetest";
 
 let basetest : BaseTest;
 
+test.describe("Login User", () => {
  // Before each test, create an instance of BaseTest
-test.beforeEach(async() => {
+ test.beforeEach(async() => {
 
     basetest=new BaseTest();
     await basetest.setup();// Set up the browser, page, and page objects
@@ -13,13 +14,12 @@ test.beforeEach(async() => {
 
 });
 
+
 // After each test, clean up
 test.afterEach(async () => {
     await basetest.teardown(); // Close the browser
 
 });
-
-test.describe("Login User", () => {
 
 test('user can login with valid credentials', async() => {
 
