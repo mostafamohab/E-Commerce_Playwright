@@ -15,6 +15,12 @@ test.beforeEach(async({}) => {
 
 });
 
+// After each test, clean up
+test.afterEach(async () => {
+  await basetest.teardown(); // Close the browser
+
+});
+
 function generateRandomEmail(): string 
 {
   randomEmail = (Math.random() + 1).toString(36).substring(2) + "@gmail.com";
