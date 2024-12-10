@@ -35,6 +35,9 @@ export default defineConfig ({
         use: 
         { ...browser.device },
 
-        reporter: [['html', { outputFolder: `test-results/playwright-report/${browser.outputFolder}` }]],
-      })),
+    reporter: 
+    [
+          ['html', { outputFolder: `test-results/playwright-report/${browser.outputFolder}` }]
+    ],
+    })),
 });
