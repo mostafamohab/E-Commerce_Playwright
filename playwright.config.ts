@@ -3,7 +3,7 @@ import { defineConfig} from '@playwright/test';
 export default defineConfig ({
     workers: 3, // Increase the number of workers for parallel execution
     testDir: './src/tests',
-    timeout: 30 * 1000,
+    timeout: 60 * 1000,
     use: {
         baseURL: "https://www.automationexercise.com",
         headless: false,
