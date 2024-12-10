@@ -27,7 +27,7 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@playwright/test@^1.49.0":
+"@playwright/test@^1.49.0", "@playwright/test@>=1.36.0":
   version "1.49.0"
   resolved "https://registry.npmjs.org/@playwright/test/-/test-1.49.0.tgz"
   integrity sha512-DMulbwQURa8rNIQrf94+jPJQ4FmOVdpE5ZppRNvWVjvhC+6sOeo28r8MgIpQRYouXRtt/FCCXU7zn20jnHR4Qw==
@@ -54,7 +54,7 @@
   resolved "https://registry.npmjs.org/@tsconfig/node16/-/node16-1.0.4.tgz"
   integrity sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==
 
-"@types/node@^22.10.1":
+"@types/node@*", "@types/node@^22.10.1":
   version "22.10.1"
   resolved "https://registry.npmjs.org/@types/node/-/node-22.10.1.tgz"
   integrity sha512-qKgsUwfHZV2WCWLAnVP1JqnpE6Im6h3Y0+fYgMTasNQ7V++CBX5OT1as0g0f+OyubbFqhf6XVNIsmN4IIhEgGQ==
@@ -85,7 +85,7 @@ allure-js-commons@3.0.7:
   dependencies:
     md5 "^2.3.0"
 
-allure-playwright@^3.0.7:
+allure-playwright@^3.0.7, allure-playwright@3.0.7:
   version "3.0.7"
   resolved "https://registry.npmjs.org/allure-playwright/-/allure-playwright-3.0.7.tgz"
   integrity sha512-kFiPBCeAGOMcJmbFOw1ANjcfH+NuXMm5NIx8QEqb1XTqzMBTOA6xeci7DVgPlrKqJtgYm3AQ4YdxzBnJZzGrog==
@@ -116,11 +116,6 @@ diff@^4.0.1:
   version "4.0.2"
   resolved "https://registry.npmjs.org/diff/-/diff-4.0.2.tgz"
   integrity sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==
-
-fsevents@2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
-  integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
 
 is-buffer@~1.1.6:
   version "1.1.6"
@@ -174,7 +169,7 @@ ts-node@^10.9.2:
     v8-compile-cache-lib "^3.0.1"
     yn "3.1.1"
 
-typescript@^5.7.2:
+typescript@^5.7.2, typescript@>=2.7:
   version "5.7.2"
   resolved "https://registry.npmjs.org/typescript/-/typescript-5.7.2.tgz"
   integrity sha512-i5t66RHxDvVN40HfDd1PsEThGNnlMCMT3jMUuoh9/0TaqWevNontacunWyN02LA9/fIbEWlcHZcgTKb9QoaLfg==
