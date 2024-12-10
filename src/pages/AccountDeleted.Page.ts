@@ -11,7 +11,7 @@ export class AccountDeletedPage extends BasePage{
         super(page);// Call the constructor of BasePage
     }
 
-    public async verifyAccountDeleted() {
+    public async verifyAccountDeleted(): Promise<void> {  
         this.getAccountDeletedTextLocator = this.page.getByText("Account Deleted!");
         await this.getAccountDeletedText.isVisible();
     }

@@ -25,7 +25,7 @@ export class LoginPage extends BasePage{
       await this.page.goto(this.baseURL+'/login');
     }
 
-    public async login(email: string, password: string){
+    public async login(email: string, password: string): Promise<void> {  
         this.getLoginEmailInput = this.page.locator("[data-qa='login-email']");
         this.getLoginPasswordInput =this.page.locator("[data-qa='login-password']");
         this.getLoginButton =this.page.locator("[data-qa='login-button']");
@@ -35,7 +35,7 @@ export class LoginPage extends BasePage{
         await this.getLoginButton.click();
     }
 
-    public async signup(name:string,email:string){
+    public async signup(name:string,email:string): Promise<void> {  
         this.getSignupNameInput =this.page.locator("[data-qa='signup-name']");
         this.getSignupEmailInput =this.page.locator("[data-qa='signup-email']");
         this.getSignupButton =this.page.locator("[data-qa='signup-button']");

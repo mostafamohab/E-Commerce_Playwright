@@ -32,7 +32,7 @@ export class SignupPage extends BasePage{
       await this.page.goto(this.baseURL+'/signup');
     }
 
-    public async fillAccountInfoDetails(username:string,password:string){
+    public async fillAccountInfoDetails(username:string,password:string): Promise<void> {  
         this.getGenderMaleButton =this.page.locator("//*[@id='id_gender1']");
         this.getPasswordInput =this.page.locator("//*[@id='password']");
         this.getDaysList =this.page.locator("//*[@id='days']");
