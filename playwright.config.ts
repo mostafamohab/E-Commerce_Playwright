@@ -25,7 +25,8 @@ export default defineConfig ({
         // Reporter will be configured dynamically inside each project
       ],
     
-      projects: browsers.map(browser => ({
+      projects:
+        browsers.map(browser => ({
         name: browser.name,
         use: { ...browser.device },
         reporter: [
