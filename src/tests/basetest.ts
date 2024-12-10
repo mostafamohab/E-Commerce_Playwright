@@ -49,14 +49,18 @@ test.beforeAll(async () => {
 });
 
 test.afterAll(async () => {
-  await baseTest.teardown(); // Runs teardown for each test
+  if (baseTest) {
+    await baseTest.teardown(); // Runs teardown once after all tests
+  } else {
+    console.error("baseTest is not defined");
+  }
 });
 
 test.beforeEach(async () => {
-  // You can access baseTest instance in each test
-  // Setup logic before each test if needed
+  const baseTest = new BaseTest();
+  await baseTest.setup(); // 
 });
 
 test.afterEach(async () => {
-  // Cleanup after each test if needed
+  
 });
