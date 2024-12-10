@@ -100,3 +100,11 @@ jobs:
         with:
           name: Playwright_Report_HTML
           path: playwright-report/index.html
+
+      # Step 11: Upload Playwright Test Results (Optional)
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Playwright_Test_Results
+          path: test-results/
