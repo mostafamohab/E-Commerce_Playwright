@@ -82,7 +82,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Playwright_Report_HTML
+          name: Playwright_Report_HTML_Chromium
           path: test-results/playwright-report/chromium/index.html
 
       # Step 12: Upload Playwright Report HTML Firefox as Pipeline Artifact
@@ -90,7 +90,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Playwright_Report_HTML
+          name: Playwright_Report_HTML_Firefox
           path: test-results/playwright-report/firefox/index.html
 
       # Step 13: Upload Playwright Report HTML Webkit as Pipeline Artifact
@@ -98,7 +98,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Playwright_Report_HTML
+          name: Playwright_Report_HTML_Webkit
           path: test-results/playwright-report/webkit/index.html
 
       # Step 14: Upload Playwright Test Results (Optional)
