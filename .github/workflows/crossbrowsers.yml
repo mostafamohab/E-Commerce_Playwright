@@ -41,19 +41,13 @@ jobs:
       - name: Compile TypeScript
         run: yarn tsc
 
-      # Step 7: Confirm Playwright artifacts generation
-      - name: List Playwright artifacts
-        run: |
-          echo "Listing the contents of test-results/playwright-report:"
-          ls -R test-results/playwright-report/
 
-
-      # Step 8: Ensure Playwright Artifacts exists
+      # Step 7: Ensure Playwright Artifacts exists
       - name: Ensure Playwright Artifacts Directory Exists
         run: |
          mkdir -p test-results/playwright-report
 
-      # Step 9: Run Playwright Tests across all browsers in parallel
+      # Step 8: Run Playwright Tests across all browsers in parallel
       - name: Run Playwright Tests across all browsers
         run: |
           echo "Running tests on all browsers: Chromium, Firefox, and WebKit (Edge)"
@@ -65,6 +59,13 @@ jobs:
           xvfb-run -a yarn playwright test --project=webkit    --reporter=html --output=test-results/playwright-report/ &   # WebKit (Edge)
           wait  # Wait for all browsers to finish running
 
+      # Step 9: Confirm Playwright artifacts generation
+      - name: List Playwright artifacts
+        run: |
+          echo "Listing the contents of test-results/playwright-report:"
+          ls -R test-results/playwright-report/
+      
+      
       # Step 10: Upload Playwright Reports as Pipeline Artifact
       - name: Upload Playwright Report as Pipeline Artifact
         if: always()
