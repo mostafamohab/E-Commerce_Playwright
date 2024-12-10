@@ -3,18 +3,18 @@ import { BasePage} from "./BasePage.Page";
 
 export class HomePage extends BasePage{
   
-    getDeleteAccountButton: Locator;
+    private getDeleteAccountButton!: Locator;
 
     constructor(page: Page)
     {
         super(page);  // Call the constructor of BasePage
-        this.getDeleteAccountButton= page.getByRole('link',{name : 'Delete Account'});
     }
     //Methods
 
     // Additional HomePage-specific methods (if needed)
     public async clickDeleteAccountButton(): Promise<void> {
-    await this.getDeleteAccountButton.click();
+      this.getDeleteAccountButton= this.page.getByRole('link',{name : 'Delete Account'});
+      await this.getDeleteAccountButton.click();
     }
 
     public async navigate(): Promise<void> {

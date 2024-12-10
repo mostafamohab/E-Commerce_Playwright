@@ -3,19 +3,31 @@ import { BasePage } from "./BasePage.Page";
 
 export class AccountDeletedPage extends BasePage{
 
-    getAccountDeletedText: Locator;
-    getContinueButton: Locator;
+    private getAccountDeletedTextLocator!: Locator;
+    private getContinueButtonText!: Locator;
 
     constructor(page: Page)
     {
-    super(page);
-        //Locators
-        this.getAccountDeletedText = page.getByText("Account Deleted!");
-        this.getContinueButton = page.locator("//*[@data-qa='continue-button']");
+    super(page);// Call the constructor of BasePage
     }
 
     public async verifyAccountDeleted() {
+        this.getAccountDeletedTextLocator = this.page.getByText("Account Deleted!");
         await this.getAccountDeletedText.isVisible();
+    }
+
+    public get getContinueButton(): Locator
+    {
+    this.getContinueButtonText = this.page.locator("//*[@data-qa='continue-button']");
+    return this.getContinueButtonText;
+
+    }
+
+    public get getAccountDeletedText(): Locator
+    {
+        this.getAccountDeletedTextLocator= this.page.getByText("Account Created!");
+        return this.getAccountDeletedTextLocator; 
+
     }
 
     public async navigate(): Promise<void> {
