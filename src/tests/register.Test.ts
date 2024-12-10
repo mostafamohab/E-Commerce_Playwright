@@ -1,10 +1,10 @@
 import { test, expect} from "@playwright/test"
 import { BaseTest } from "./basetest";
 
-test.describe("Register User", () => {
+let basetest: BaseTest;
+let randomEmail: string;
 
-  let basetest: BaseTest;
-  let randomEmail: string;
+test.describe("Register User", () => {
 
   function generateRandomEmail(): string 
   {
