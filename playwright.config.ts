@@ -1,4 +1,4 @@
-import { devices ,defineConfig} from '@playwright/test';
+import { defineConfig} from '@playwright/test';
 
 export default defineConfig ({
     workers: 3, // Increase the number of workers for parallel execution
@@ -14,20 +14,21 @@ export default defineConfig ({
             slowMo: 50
         }
     },
+
     reporter : [['html', { outputFolder: 'test-results' }]],
 
     projects: [
         {
           name: 'chromium',
-          use: { ...devices['Desktop Chrome'] },
+          use: { browserName: 'chromium' }
         },
         {
           name: 'firefox',
-          use: { ...devices['Desktop Firefox'] },
+          use: { browserName: 'firefox' }
         },
         {
           name: 'webkit',
-          use: { ...devices['Desktop Edge'] },
+          use: { browserName: 'webkit' }
         },
       ],
 });
