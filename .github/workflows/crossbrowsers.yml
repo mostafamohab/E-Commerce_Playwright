@@ -41,24 +41,31 @@ jobs:
       - name: Compile TypeScript
         run: yarn tsc
 
-      # Step 7: Ensure Playwright Artifacts exists
+      # Step 7: Confirm Playwright artifacts generation
+      - name: List Playwright artifacts
+        run: |
+          echo "Listing the contents of test-results/playwright-report:"
+          ls -R test-results/playwright-report/
+
+
+      # Step 8: Ensure Playwright Artifacts exists
       - name: Ensure Playwright Artifacts Directory Exists
         run: |
          mkdir -p test-results/playwright-report
 
-      # Step 8: Run Playwright Tests across all browsers in parallel
+      # Step 9: Run Playwright Tests across all browsers in parallel
       - name: Run Playwright Tests across all browsers
         run: |
           echo "Running tests on all browsers: Chromium, Firefox, and WebKit (Edge)"
           
           # Run tests across all browsers in parallel using the `projects` configuration
           # The `&` operator runs these commands in parallel, and `wait` ensures that they all finish before continuing
-          xvfb-run -a yarn playwright test --project=chromium  --reporter=html --output=test-results/playwright-report/ && ls test-results/playwright-report/ &   # Chromium
-          xvfb-run -a yarn playwright test --project=firefox   --reporter=html --output=test-results/playwright-report/ && ls test-results/playwright-report/ &   # Firefox
-          xvfb-run -a yarn playwright test --project=webkit    --reporter=html --output=test-results/playwright-report/ && ls test-results/playwright-report/ &   # WebKit (Edge)
+          xvfb-run -a yarn playwright test --project=chromium  --reporter=html --output=test-results/playwright-report/ &   # Chromium
+          xvfb-run -a yarn playwright test --project=firefox   --reporter=html --output=test-results/playwright-report/ &   # Firefox
+          xvfb-run -a yarn playwright test --project=webkit    --reporter=html --output=test-results/playwright-report/ &   # WebKit (Edge)
           wait  # Wait for all browsers to finish running
 
-      # Step 9: Upload Playwright Reports as Pipeline Artifact
+      # Step 10: Upload Playwright Reports as Pipeline Artifact
       - name: Upload Playwright Report as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -66,7 +73,7 @@ jobs:
           name: Playwright_Report
           path: test-results/playwright-report/
 
-      # Step 10: Upload Playwright Report HTML as Pipeline Artifact
+      # Step 11: Upload Playwright Report HTML as Pipeline Artifact
       - name: Upload Playwright Report HTML as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -74,7 +81,7 @@ jobs:
           name: Playwright_Report_HTML
           path: test-results/playwright-report/index.html
 
-      # Step 11: Upload Playwright Test Results (Optional)
+      # Step 12: Upload Playwright Test Results (Optional)
       - name: Upload Test Results
         if: always()
         uses: actions/upload-artifact@v4
