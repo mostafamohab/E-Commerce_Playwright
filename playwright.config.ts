@@ -28,7 +28,7 @@ export default defineConfig ({
     },
     
     projects: 
-        browsers.map((browser: { name: any; device: any; outputFolder: any; }) => ({
+        browsers.map((browser) => ({
         name: 
         browser.name,
 
