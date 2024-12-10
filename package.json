@@ -18,11 +18,8 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
+    "@playwright/test": "1.49.0",
     "allure-playwright": "^3.0.7"
   },
-  "resolutions": {
-    "@playwright/test": "1.49.0"
-  },
   "repository": "https://github.com/mostafamohab/E-Commerce_Playwright.git"
-
 }
