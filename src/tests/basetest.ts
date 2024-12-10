@@ -43,15 +43,18 @@ export class BaseTest implements IBaseTest {
 let baseTest!: BaseTest;
 
 // Automatically run setup and teardown before and after each test
-test.beforeAll(async () => {
-  baseTest = new BaseTest();
+test.beforeEach(async () => {
   await baseTest.setup(); // Runs setup for each test
 });
 
-test.afterAll(async () => {
+test.afterEach(async () => {
   if (baseTest) {
-    await baseTest.teardown(); // Runs teardown once after all tests
+    await baseTest.teardown(); // Runs teardown once after each test
   } else {
     console.error("baseTest is not defined");
   }
+});
+
+test.beforeAll(async () => {
+  baseTest = new BaseTest();
 });
