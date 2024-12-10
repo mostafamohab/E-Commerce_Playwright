@@ -2,6 +2,7 @@ import { Locator, Page } from "@playwright/test"
 import { BasePage } from "./BasePage.Page";
  
 export class AccountCreatedPage extends BasePage{
+    
     private getAccountCreatedTextLocator!: Locator;
     private getContinueButtonText!: Locator;
 

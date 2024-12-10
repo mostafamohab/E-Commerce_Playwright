@@ -2,6 +2,7 @@ import { Locator, Page } from "@playwright/test";
 import { BasePage } from "./BasePage.Page";
 
 export class LoginPage extends BasePage{
+    
     private getLoginEmailInput!: Locator;
     private getLoginPasswordInput!: Locator;
     private getLoginButton!: Locator;

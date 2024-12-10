@@ -2,6 +2,7 @@ import { Locator, Page } from "@playwright/test";
 import { BasePage } from "./BasePage.Page";
 
 export class SignupPage extends BasePage{
+    
     private getGenderMaleButton!: Locator;
     private getPasswordInput!: Locator;
     private getDaysList!: Locator;
