@@ -53,9 +53,9 @@ jobs:
           
           # Run tests across all browsers in parallel using the `projects` configuration
           # The `&` operator runs these commands in parallel, and `wait` ensures that they all finish before continuing
-          xvfb-run -a yarn playwright test --project=chromium --reporter=html &   # Chromium
-          xvfb-run -a yarn playwright test --project=firefox --reporter=html &     # Firefox
-          xvfb-run -a yarn playwright test --project=webkit --reporter=html &      # WebKit (Edge)
+          xvfb-run -a yarn playwright test --project=chromium  --reporter=html --output=test-results/playwright-report/ &   # Chromium
+          xvfb-run -a yarn playwright test --project=firefox   --reporter=html --output=test-results/playwright-report/ &   # Firefox
+          xvfb-run -a yarn playwright test --project=webkit    --reporter=html --output=test-results/playwright-report/ &   # WebKit (Edge)
           wait  # Wait for all browsers to finish running
 
       # Step 9: Upload Playwright Reports as Pipeline Artifact
