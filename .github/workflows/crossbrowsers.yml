@@ -64,7 +64,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Playwright_Report
-          path: playwright-report/
+          path: test-results/playwright-report/
 
       # Step 10: Upload Playwright Report HTML as Pipeline Artifact
       - name: Upload Playwright Report HTML as Pipeline Artifact
@@ -72,7 +72,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Playwright_Report_HTML
-          path: playwright-report/index.html
+          path: test-results/playwright-report/index.html
 
       # Step 11: Upload Playwright Test Results (Optional)
       - name: Upload Test Results
