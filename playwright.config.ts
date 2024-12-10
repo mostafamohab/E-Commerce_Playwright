@@ -1,4 +1,10 @@
-import { defineConfig} from '@playwright/test';
+import { defineConfig, devices} from '@playwright/test';
+
+const browsers = [
+  { name: 'chromium', device: devices['Desktop Chrome'], outputFolder: 'chromium' },
+  { name: 'firefox', device: devices['Desktop Firefox'], outputFolder: 'firefox' },
+  { name: 'webkit', device: devices['Desktop Safari'], outputFolder: 'webkit' }
+];
 
 export default defineConfig ({
     workers: 3, // Increase the number of workers for parallel execution
@@ -15,23 +21,15 @@ export default defineConfig ({
         }
     },
 
-    reporter : [['html', { outputFolder: 'test-results/playwright-report' }]],
-
-    projects: [
-        {
-          name: 'chromium',
-          use: { browserName: 'chromium' },
-          outputDir: 'test-results/playwright-report/chromium', // Specify the output folder for test results
-        },
-        {
-          name: 'firefox',
-          use: { browserName: 'firefox' },
-          outputDir: 'test-results/playwright-report/firefox', // Specify the output folder for test results
-        },
-        {
-          name: 'webkit',
-          use: { browserName: 'webkit' },
-          outputDir: 'test-results/playwright-report/webkit', // Specify the output folder for test results
-        },
+      reporter: [
+        // Reporter will be configured dynamically inside each project
       ],
+    
+      projects: browsers.map(browser => ({
+        name: browser.name,
+        use: { ...browser.device },
+        reporter: [
+          ['html', { outputFolder: `test-results/playwright-report/${browser.outputFolder}` }],
+        ],
+      })),
 });
