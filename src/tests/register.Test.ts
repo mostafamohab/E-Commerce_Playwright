@@ -1,7 +1,6 @@
 import { test, expect, Locator} from "@playwright/test"
 import { BaseTest } from "./basetest";
 
-test.describe("Register User", async() => {
 let basetest: BaseTest;
 let randomEmail: string;
 
@@ -26,6 +25,8 @@ function generateRandomEmail(): string
   randomEmail = (Math.random() + 1).toString(36).substring(2) + "@gmail.com";
   return randomEmail;
 }
+
+test.describe("Register User", async() => {
 
 test("user can register user with valid credentials", async ({}) => {
     //1- Navigate to Login Page

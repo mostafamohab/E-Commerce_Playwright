@@ -1,7 +1,6 @@
 import { test, expect, Locator} from "@playwright/test"
 import { BaseTest } from "./basetest";
 
-test.describe("Login User", async() => {
 let basetest : BaseTest;
 
  // Before each test, create an instance of BaseTest
@@ -14,12 +13,13 @@ test.beforeEach(async() => {
 
 });
 
-
 // After each test, clean up
 test.afterEach(async () => {
     await basetest.teardown(); // Close the browser
 
 });
+
+test.describe("Login User", async() => {
 
 test('user can login with valid credentials', async() => {
 
