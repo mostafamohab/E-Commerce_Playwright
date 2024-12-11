@@ -34,11 +34,11 @@ export default defineConfig ({
         browser.name,
 
         use: 
-        { ...browser.device },
+        { ...browser.device, },
 
     reporter: 
     [
-          ['html', { outputFolder: 'test-results/playwright-report/'+'${browser.outputFolder}' }]
+          ['html', { outputFolder: `test-results/playwright-report/${browser.outputFolder}` }]
     ],
     })),
 });
