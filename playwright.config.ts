@@ -20,10 +20,11 @@ export default defineConfig ({
         baseURL: "https://www.automationexercise.com",
         headless: false,
         video: 'on',  // Record video during tests
-        trace: 'on', // This will generate a trace for every test
+        trace: 'off', // This will generte a trace for every test
         screenshot: 'only-on-failure',
         launchOptions: {
-            slowMo: 50
+          headless: false,
+          slowMo: 50
         }
     },
     
