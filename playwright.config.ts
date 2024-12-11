@@ -38,7 +38,7 @@ export default defineConfig ({
 
     reporter: 
     [
-          ['html', { outputFolder: `test-results/playwright-report/${browser.outputFolder}` }]
+          ['html', { outputFolder:  `test-results/playwright-report/${browser.outputFolder}` }]
     ],
     })),
 });
