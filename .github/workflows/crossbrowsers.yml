@@ -25,32 +25,26 @@ jobs:
       - name: Install Yarn
         run: |
           npm install -g yarn
-
-      # Step 4: Install dependencies using Yarn
-      - name: Install dependencies
-        run: |
           yarn install
           yarn add playwright
           yarn add typescript ts-node @types/node
 
-      # Step 5: Install Playwright Browsers
+      # Step 4: Install Playwright Browsers
       - name: Install Playwright Browsers
         run: yarn playwright install --with-deps
 
-      # Step 6: Compile TypeScript
+      # Step 5: Compile TypeScript
       - name: Compile TypeScript
         run: yarn tsc
 
 
-      # Step 7: Ensure Playwright Artifacts exists
+      # Step 6: Ensure Playwright Artifacts exists
       - name: Ensure Playwright Artifacts Directory Exists
         run: |
          mkdir -p test-results/playwright-report
-         mkdir -p test-results/playwright-report/chromium
-         mkdir -p test-results/playwright-report/firefox
-         mkdir -p test-results/playwright-report/webkit
+         mkdir -p test-results/playwright-report/{chromium,firefox,webkit}
 
-      # Step 8: Run Playwright Tests across all browsers in parallel
+      # Step 7: Run Playwright Tests across all browsers in parallel
       - name: Run Playwright Tests across all browsers
         run: |
           echo "Running tests on all browsers: Chromium, Firefox, and WebKit (Edge)"
@@ -62,14 +56,14 @@ jobs:
           xvfb-run -a yarn playwright test --project=webkit    --reporter=html --output=test-results/playwright-report/webkit/ &   # WebKit (Edge)
           wait  # Wait for all browsers to finish running
 
-      # Step 9: Confirm Playwright artifacts generation
+      # Step 8: Confirm Playwright artifacts generation
       - name: List Playwright artifacts
         run: |
           echo "Listing the contents of test-results/playwright-report:"
           ls -R test-results/playwright-report/
       
       
-      # Step 10: Upload Playwright Reports as Pipeline Artifact
+      # Step 9: Upload Playwright Reports as Pipeline Artifact
       - name: Upload Playwright Report as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -77,7 +71,7 @@ jobs:
           name: Playwright_Report
           path: test-results/playwright-report/
 
-      # Step 11: Upload Playwright Report HTML Chrome as Pipeline Artifact
+      # Step 10: Upload Playwright Report HTML Chrome as Pipeline Artifact
       - name: Upload Playwright Report HTML as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -85,7 +79,7 @@ jobs:
           name: Playwright_Report_HTML_Chromium
           path: test-results/playwright-report/chromium/index.html
 
-      # Step 12: Upload Playwright Report HTML Firefox as Pipeline Artifact
+      # Step 11: Upload Playwright Report HTML Firefox as Pipeline Artifact
       - name: Upload Playwright Report HTML as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -93,7 +87,7 @@ jobs:
           name: Playwright_Report_HTML_Firefox
           path: test-results/playwright-report/firefox/index.html
 
-      # Step 13: Upload Playwright Report HTML Webkit as Pipeline Artifact
+      # Step 12: Upload Playwright Report HTML Webkit as Pipeline Artifact
       - name: Upload Playwright Report HTML as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -101,7 +95,7 @@ jobs:
           name: Playwright_Report_HTML_Webkit
           path: test-results/playwright-report/webkit/index.html
 
-      # Step 14: Upload Playwright Test Results (Optional)
+      # Step 13: Upload Playwright Test Results (Optional)
       - name: Upload Test Results
         if: always()
         uses: actions/upload-artifact@v4
