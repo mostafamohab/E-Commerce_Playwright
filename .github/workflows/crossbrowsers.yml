@@ -80,6 +80,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Playwright_Report_HTML
-          path: test-results/playwright-report/html/chromium/index.html
-                test-results/playwright-report/html/firefox/index.html
-                test-results/playwright-report/html/webkit/index.html
+          path: test-results/playwright-report/chromium/index.html
+                test-results/playwright-report/firefox/index.html
+                test-results/playwright-report/webkit/index.html
