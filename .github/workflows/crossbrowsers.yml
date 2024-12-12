@@ -41,7 +41,7 @@ jobs:
       # Step 6: Ensure Playwright Artifacts exists
       - name: Ensure Playwright Artifacts Directory Exists
         run: |
-             mkdir -p test-results
+             mkdir -p reports/playwright-report
 
       # Step 7: Run Playwright Tests across all browsers in parallel
       - name: Run Playwright Tests across all browsers
@@ -66,15 +66,7 @@ jobs:
         run: |
           sleep 20  # Adjust time as needed to ensure reports are written
       
-      # Step 10: Upload Playwright Reports as Pipeline Artifact
-      - name: Upload Playwright Report as Pipeline Artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: Playwright_Report
-          path: reports/playwright-report
-
-      # Step 11: Upload Playwright Report HTML as Pipeline Artifact
+      # Step 10: Upload Playwright Report HTML as Pipeline Artifact
       - name: Upload Playwright Report HTML as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v4
