@@ -65,8 +65,7 @@ jobs:
       # Step 7: Ensure Playwright Artifacts exists
       - name: Ensure Playwright Artifacts Directory Exists
         run: |
-          mkdir -p test-results/playwright-report
-          mkdir -p test-results/playwright-report/html
+          mkdir -p test-results
 
       # Step 8: Run Playwright Tests with xvfb-run
       - name: Run Playwright Tests with xvfb-run
@@ -88,7 +87,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Playwright_Report
-          path: test-results/playwright-report/
+          path: test-results
 
       # Step 10: Upload Playwright Report HTML as Pipeline Artifact
       - name: Upload Playwright Report HTML as Pipeline Artifact
@@ -96,7 +95,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Playwright_Report_HTML
-          path: test-results/playwright-report/index.html
+          path: test-results/index.html
 
       # Step 11: Upload Playwright Test Results (Optional)
       - name: Upload Test Results
