@@ -59,7 +59,7 @@ jobs:
       - name: List Playwright artifacts
         run: |
           echo "Listing the contents of test-results/playwright-report:"
-          ls -R test-results/playwright-report/
+          ls -R test-results
 
       # Step 9: Wait for the test results to generate (optional)
       - name: Wait for the test results to generate
