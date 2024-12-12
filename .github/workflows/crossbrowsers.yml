@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: lts/*
 
-      # Step 3: Install Yarn (if not installed)
+      # Step 3: Install dependencies using Yarn
       - name: Install Yarn
         run: |
           npm install -g yarn
@@ -74,7 +74,7 @@ jobs:
           name: Playwright_Report
           path: test-results/playwright-report
 
-      # Step 13: Upload Playwright Report HTML as Pipeline Artifact
+      # Step 11: Upload Playwright Report HTML as Pipeline Artifact
       - name: Upload Playwright Report HTML as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v4
