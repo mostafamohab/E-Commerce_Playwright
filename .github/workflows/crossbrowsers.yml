@@ -41,7 +41,10 @@ jobs:
       # Step 6: Ensure Playwright Artifacts exists
       - name: Ensure Playwright Artifacts Directory Exists
         run: |
-         mkdir -p test-results/playwright-report/{chromium,firefox,webkit}
+             mkdir -p test-results/playwright-report
+             mkdir -p test-results/playwright-report/html/chromium
+             mkdir -p test-results/playwright-report/html/firefox
+             mkdir -p test-results/playwright-report/html/webkit
 
       # Step 7: Run Playwright Tests across all browsers in parallel
       - name: Run Playwright Tests across all browsers
