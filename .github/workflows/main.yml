@@ -30,23 +30,19 @@ jobs:
         with:
           node-version: lts/*
 
-      # Step 3: Install Yarn (if not installed)
-      - name: Install Yarn
-        run: |
-          npm install -g yarn
-
-      # Step 4: Install dependencies using Yarn
+      # Step 3: Install dependencies using Yarn
       - name: Install dependencies
         run: |
+          npm install -g yarn
           yarn install
           yarn add playwright
           yarn add typescript ts-node @types/node
 
-      # Step 5: Install Playwright Browsers
+      # Step 4: Install Playwright Browsers
       - name: Install Playwright Browsers
         run: yarn playwright install --with-deps
 
-      # Step 6: Log Browser Version
+      # Step 5: Log Browser Version
       - name: Log Browser Version
         run: |
           if [ '${{ github.event.inputs.targetBrowser }}' == 'firefox' ]; then
@@ -62,16 +58,16 @@ jobs:
               echo "Browser not supported"
           fi
 
-      # Step 7: Compile TypeScript
+      # Step 6: Compile TypeScript
       - name: Compile TypeScript
         run: yarn tsc
 
-      # Step 8: Ensure Playwright Artifacts exists
+      # Step 7: Ensure Playwright Artifacts exists
       - name: Ensure Playwright Artifacts Directory Exists
         run: |
           mkdir -p test-results/playwright-report
 
-      # Step 9: Run Playwright Tests with xvfb-run
+      # Step 8: Run Playwright Tests with xvfb-run
       - name: Run Playwright Tests with xvfb-run
         run: |
           # Check if Xvfb is needed (for headed mode)
@@ -85,7 +81,7 @@ jobs:
             yarn playwright test --project="${{ github.event.inputs.targetBrowser || 'chromium' }}"
           fi
 
-      # Step 10: Upload Playwright Report as Pipeline Artifact
+      # Step 9: Upload Playwright Report as Pipeline Artifact
       - name: Upload Playwright Report as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -93,7 +89,7 @@ jobs:
           name: Playwright_Report
           path: test-results/playwright-report/
 
-      # Step 11: Upload Playwright Report HTML as Pipeline Artifact
+      # Step 10: Upload Playwright Report HTML as Pipeline Artifact
       - name: Upload Playwright Report HTML as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v4
