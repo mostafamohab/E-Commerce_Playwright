@@ -65,6 +65,7 @@ jobs:
       # Step 7: Ensure Playwright Artifacts exists
       - name: Ensure Playwright Artifacts Directory Exists
         run: |
+          mkdir -p test-results/playwright-report
           mkdir -p test-results/playwright-report/html/${{ github.event.inputs.targetBrowser }}
 
       # Step 8: Run Playwright Tests with xvfb-run
