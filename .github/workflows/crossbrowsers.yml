@@ -41,7 +41,7 @@ jobs:
       # Step 6: Ensure Playwright Artifacts exists
       - name: Ensure Playwright Artifacts Directory Exists
         run: |
-             mkdir -p test-results/playwright-report/html
+             mkdir -p test-results/playwright-report
 
       # Step 7: Run Playwright Tests across all browsers in parallel
       - name: Run Playwright Tests across all browsers
@@ -50,9 +50,9 @@ jobs:
           
           # Run tests across all browsers in parallel using the `projects` configuration
           # The `&` operator runs these commands in parallel, and `wait` ensures that they all finish before continuing
-          xvfb-run -a yarn playwright test --project=chromium  --reporter=html --output=test-results/playwright-report/html/chromium/ &   # Chromium
-          xvfb-run -a yarn playwright test --project=firefox   --reporter=html --output=test-results/playwright-report/html/firefox/ &   # Firefox
-          xvfb-run -a yarn playwright test --project=webkit    --reporter=html --output=test-results/playwright-report/html/webkit/ &   # WebKit (Edge)
+          xvfb-run -a yarn playwright test --project=chromium  --reporter=html --output=test-results/playwright-report/chromium/ &   # Chromium
+          xvfb-run -a yarn playwright test --project=firefox   --reporter=html --output=test-results/playwright-report/firefox/ &   # Firefox
+          xvfb-run -a yarn playwright test --project=webkit    --reporter=html --output=test-results/playwright-report/webkit/ &   # WebKit (Edge)
           wait  # Wait for all browsers to finish running
 
       # Step 8: Confirm Playwright artifacts generation
