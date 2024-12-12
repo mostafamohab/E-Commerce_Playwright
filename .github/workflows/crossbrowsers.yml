@@ -60,9 +60,13 @@ jobs:
         run: |
           echo "Listing the contents of test-results/playwright-report:"
           ls -R test-results/playwright-report/
+
+      # Step 9: Wait for the test results to generate (optional)
+      - name: Wait for the test results to generate
+        run: |
+          sleep 10  # Adjust time as needed to ensure reports are written
       
-      
-      # Step 9: Upload Playwright Reports as Pipeline Artifact
+      # Step 10: Upload Playwright Reports as Pipeline Artifact
       - name: Upload Playwright Report as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -70,7 +74,7 @@ jobs:
           name: Playwright_Report
           path: test-results/playwright-report/
 
-      # Step 10: Upload Playwright Report HTML Chrome as Pipeline Artifact
+      # Step 11: Upload Playwright Report HTML Chrome as Pipeline Artifact
       - name: Upload Playwright Report HTML as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -78,7 +82,7 @@ jobs:
           name: Playwright_Report_HTML_Chromium
           path: test-results/playwright-report/chromium/index.html
 
-      # Step 11: Upload Playwright Report HTML Firefox as Pipeline Artifact
+      # Step 12: Upload Playwright Report HTML Firefox as Pipeline Artifact
       - name: Upload Playwright Report HTML as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -86,7 +90,7 @@ jobs:
           name: Playwright_Report_HTML_Firefox
           path: test-results/playwright-report/firefox/index.html
 
-      # Step 12: Upload Playwright Report HTML Webkit as Pipeline Artifact
+      # Step 13: Upload Playwright Report HTML Webkit as Pipeline Artifact
       - name: Upload Playwright Report HTML as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -94,7 +98,7 @@ jobs:
           name: Playwright_Report_HTML_Webkit
           path: test-results/playwright-report/webkit/index.html
 
-      # Step 13: Upload Playwright Test Results (Optional)
+      # Step 14: Upload Playwright Test Results (Optional)
       - name: Upload Test Results
         if: always()
         uses: actions/upload-artifact@v4
