@@ -66,6 +66,7 @@ jobs:
       - name: Ensure Playwright Artifacts Directory Exists
         run: |
           mkdir -p test-results/playwright-report
+          mkdir -p test-results/playwright-report/html
 
       # Step 8: Run Playwright Tests with xvfb-run
       - name: Run Playwright Tests with xvfb-run
