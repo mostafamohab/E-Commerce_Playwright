@@ -81,26 +81,10 @@ jobs:
             yarn playwright test --project="${{ github.event.inputs.targetBrowser || 'chromium' }}"
           fi
 
-      # Step 9: Upload Playwright Report as Pipeline Artifact
-      - name: Upload Playwright Report as Pipeline Artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: Playwright_Report
-          path: test-results
-
-      # Step 10: Upload Playwright Report HTML as Pipeline Artifact
+      # Step 9: Upload Playwright Report HTML as Pipeline Artifact
       - name: Upload Playwright Report HTML as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: Playwright_Report_HTML
           path: test-results/index.html
-
-      # Step 11: Upload Playwright Test Results (Optional)
-      - name: Upload Test Results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: Playwright_Test_Results
-          path: test-results
