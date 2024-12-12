@@ -50,9 +50,9 @@ jobs:
           
           # Run tests across all browsers in parallel using the `projects` configuration
           # The `&` operator runs these commands in parallel, and `wait` ensures that they all finish before continuing
-          xvfb-run -a yarn playwright test --project=chromium  --reporter=html --output=test-results/playwright-report/chromium/ &   # Chromium
-          xvfb-run -a yarn playwright test --project=firefox   --reporter=html --output=test-results/playwright-report/firefox/ &   # Firefox
-          xvfb-run -a yarn playwright test --project=webkit    --reporter=html --output=test-results/playwright-report/webkit/ &   # WebKit (Edge)
+          xvfb-run -a yarn playwright test --project=chromium  --reporter=html --output=test-results/playwright-report &   # Chromium
+          xvfb-run -a yarn playwright test --project=firefox   --reporter=html --output=test-results/playwright-report &   # Firefox
+          xvfb-run -a yarn playwright test --project=webkit    --reporter=html --output=test-results/playwright-report &   # WebKit (Edge)
           wait  # Wait for all browsers to finish running
 
       # Step 8: Confirm Playwright artifacts generation
@@ -80,6 +80,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Playwright_Report_HTML
-          path: test-results/playwright-report/chromium/index.html
-                test-results/playwright-report/firefox/index.html
-                test-results/playwright-report/webkit/index.html
+          path: test-results/playwright-report/index.html
