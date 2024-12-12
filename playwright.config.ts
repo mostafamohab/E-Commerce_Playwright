@@ -24,7 +24,7 @@ export default defineConfig({
 
   // Reporter configuration (moved out of projects)
   reporter: [
-      ['html', { outputFolder: 'test-results/playwright-report/html' }],
+      ['html', { outputFolder: 'test-results' }],
   ],
 
   // Static Projects configuration for each browser
