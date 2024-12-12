@@ -64,7 +64,7 @@ jobs:
       # Step 9: Wait for the test results to generate (optional)
       - name: Wait for the test results to generate
         run: |
-          sleep 10  # Adjust time as needed to ensure reports are written
+          sleep 20  # Adjust time as needed to ensure reports are written
       
       # Step 10: Upload Playwright Reports as Pipeline Artifact
       - name: Upload Playwright Report as Pipeline Artifact
