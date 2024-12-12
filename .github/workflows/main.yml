@@ -96,7 +96,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Playwright_Report_HTML
-          path: test-results/playwright-report/html-reports/${{ github.event.inputs.targetBrowser }}/index.html
+          path: test-results/playwright-report/html-reports/index.html
 
       # Step 11: Upload Playwright Test Results (Optional)
       - name: Upload Test Results
