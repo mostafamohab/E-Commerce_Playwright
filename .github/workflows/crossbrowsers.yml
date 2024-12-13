@@ -70,6 +70,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Playwright_Report_HTML
-          **path: 
-          playwright-report/**  
+          **path: playwright-report/**  
           # Fixed path to the default Playwright report directory
