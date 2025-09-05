@@ -37,29 +37,27 @@ jobs:
       - name: Compile TypeScript
         run: yarn tsc
 
-
-      # Step 6: Ensure Playwright Artifacts exists
+      # Step 6: Ensure Playwright Artifacts Directory Exists
       - name: Ensure Playwright Artifacts Directory Exists
         run: |
-             mkdir -p reports/playwright-report
+          mkdir -p reports/playwright-report
 
       # Step 7: Run Playwright Tests across all browsers in parallel
       - name: Run Playwright Tests across all browsers
         run: |
           echo "Running tests on all browsers: Chromium, Firefox, and WebKit (Edge)"
           
-          # Run tests across all browsers in parallel using the `projects` configuration
-          # The `&` operator runs these commands in parallel, and `wait` ensures that they all finish before continuing
-          xvfb-run -a yarn playwright test --project=chromium --reporter=html --output=reports/playwright-report/chromium &   # Chromium
-          xvfb-run -a yarn playwright test --project=firefox --reporter=html --output=reports/playwright-report/firefox &   # Firefox
-          xvfb-run -a yarn playwright test --project=webkit --reporter=html --output=reports/playwright-report/webkit &   # WebKit (Edge)
+          # Run tests across all browsers in parallel
+          xvfb-run -a yarn playwright test --project=chromium --reporter=html &   # Chromium
+          xvfb-run -a yarn playwright test --project=firefox --reporter=html &   # Firefox
+          xvfb-run -a yarn playwright test --project=webkit --reporter=html &   # WebKit (Edge)
           wait  # Wait for all browsers to finish running
 
       # Step 8: Confirm Playwright artifacts generation
       - name: List Playwright artifacts
         run: |
-          echo "Listing the contents of reports/playwright-report:"
-          ls -R reports/playwright-report
+          echo "Listing the contents of the default Playwright report directory:"
+          ls -R playwright-report
 
       # Step 9: Wait for the test results to generate (optional)
       - name: Wait for the test results to generate
@@ -72,4 +70,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Playwright_Report_HTML
-          path: reports/playwright-report/'*'/index.html
+          path: playwright-report/**  
+          # Fixed path to the default Playwright report directory
