@@ -17,7 +17,7 @@ export class LoginPage extends BasePage{
 
     //Methods
 
-    public async navigate(): Promise<void> {
+    public async navigate(){
         if (!this.page) {
             throw new Error("Page is not available");
         }

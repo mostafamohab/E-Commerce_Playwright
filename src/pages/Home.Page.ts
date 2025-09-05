@@ -17,7 +17,7 @@ export class HomePage extends BasePage{
       await this.getDeleteAccountButton.click();
     }
 
-    public async navigate(): Promise<void> {
+    public async navigate() {
       await this.page.goto(this.baseURL);
   }
 }

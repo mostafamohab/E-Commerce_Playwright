@@ -14,11 +14,11 @@ export class BasePage implements IBasePage {
   }
 
   // Define shared methods
-  public async navigate(): Promise<void> {
+  public async navigate() {
     await this.page.goto(this.baseURL);
   }
 
-  public async navigateGeneral(path: string): Promise<void> {
+  public async navigateGeneral(path: string) {
     await this.page.goto(`${this.baseURL}${path}`);
   }
 

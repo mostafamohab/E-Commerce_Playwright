@@ -25,7 +25,7 @@ export class AccountCreatedPage extends BasePage{
         return this.getContinueButtonText;
 
     }
-    public async navigate(): Promise<void> {
+    public async navigate() {
         await this.page.goto(this.baseURL+'/account_created');
     }
 
