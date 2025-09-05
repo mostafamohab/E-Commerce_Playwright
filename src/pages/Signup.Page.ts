@@ -51,24 +51,22 @@ export class SignupPage extends BasePage{
         this.getMobileNumberInput =this.page.locator("//*[@data-qa='mobile_number']");
         this.getCreateAccountButton =this.page.locator("//*[@data-qa='create-account']");
         
-        await Promise.all([
-            this.getGenderMaleButton.check(),
-            this.getPasswordInput.fill("Password123"),
-            this.getDaysList.selectOption({ value: "30" }),
-            this.getMonthsList.selectOption({ value: "1" }),
-            this.getYearsList.selectOption({ value: "1994" }),
-            this.getNewsletterCheckbox.check(),
-            this.getOfferCheckbox.check(),
-            this.getFirstNameInput.fill("Mostafa"),
-            this.getLastNameInput.fill("Mohab"),
-            this.getCompanyInput.fill("Cairo"),
-            this.getAddressInput.fill("Cairo , EG"),
-            this.getCountryList.selectOption({ value: "United States" }),
-            this.getStateInput.fill("California"),
-            this.getCityInput.fill("Los Angeles"),
-            this.getZipCodeInput.fill("90002"),
-            this.getMobileNumberInput.fill("323 123123123")
-        ]);
+        await this.getGenderMaleButton.check();
+        await this.getPasswordInput.fill("Password123");
+        await this.getDaysList.selectOption({value: "30"});
+        await this.getMonthsList.selectOption({value: "1"});
+        await this.getYearsList.selectOption({value: '1994'});
+        await this.getNewsletterCheckbox.check();
+        await this.getOfferCheckbox.check();
+        await this.getFirstNameInput.fill("Mostafa");
+        await this.getLastNameInput.fill("Mohab");
+        await this.getCompanyInput.fill("Cairo");
+        await this.getAddressInput.fill("Cairo , EG");
+        await this.getCountryList.selectOption({value : 'United States'});
+        await this.getStateInput.fill("California");
+        await this.getCityInput.fill("Los Angeles");
+        await this.getZipCodeInput.fill("90002");
+        await this.getMobileNumberInput.fill("323 123123123");
         await this.getCreateAccountButton.click();
     }
 }

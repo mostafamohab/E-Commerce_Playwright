@@ -17,7 +17,7 @@ export class LoginPage extends BasePage{
 
     //Methods
 
-    public async navigate(){
+    public async navigate(): Promise<void> {
         if (!this.page) {
             throw new Error("Page is not available");
         }
@@ -40,10 +40,8 @@ export class LoginPage extends BasePage{
         this.getSignupEmailInput =this.page.locator("[data-qa='signup-email']");
         this.getSignupButton =this.page.locator("[data-qa='signup-button']");
 
-        await Promise.all([
-            this.getSignupNameInput.fill(name),
-            this.getSignupEmailInput.fill(email)
-        ]);
+        await this.getSignupNameInput.fill(name);
+        await this.getSignupEmailInput.fill(email);
         await this.getSignupButton.click();
     }
 }
