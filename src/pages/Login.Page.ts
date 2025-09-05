@@ -40,8 +40,10 @@ export class LoginPage extends BasePage{
         this.getSignupEmailInput =this.page.locator("[data-qa='signup-email']");
         this.getSignupButton =this.page.locator("[data-qa='signup-button']");
 
-        await this.getSignupNameInput.fill(name);
-        await this.getSignupEmailInput.fill(email);
+        await Promise.all([
+            this.getSignupNameInput.fill(name),
+            this.getSignupEmailInput.fill(email)
+        ]);
         await this.getSignupButton.click();
     }
 }
